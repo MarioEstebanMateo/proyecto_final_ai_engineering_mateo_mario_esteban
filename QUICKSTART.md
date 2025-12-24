@@ -17,10 +17,10 @@ Edita el archivo `.env` en la raíz del proyecto:
 ```env
 VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
 VITE_SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-VITE_OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VITE_GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-> La API Key de OpenAI ya está configurada. Solo necesitas tu URL y Key de Supabase.
+> **Groq es 100% GRATUITO** - Obtén tu API Key en https://console.groq.com (sin tarjeta de crédito). Solo necesitas también tu URL y Key de Supabase.
 
 ### 3️⃣ Ejecutar la Aplicación (30 segundos)
 

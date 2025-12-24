@@ -298,29 +298,32 @@ getPostresHelados()
 → SELECT * FROM postreshelados ORDER BY nombre ASC
 ```
 
-### OpenAI
+### Groq (IA Conversacional)
 
 **Configuración:**
 
 ```javascript
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true, // Solo para desarrollo
-});
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 ```
+
+**Ventajas:**
+
+- ✅ 100% Gratuito (14,400 requests/día)
+- ✅ Muy rápido (hasta 10x más que GPT)
+- ✅ Sin tarjeta de crédito
+- ✅ Modelo potente: Llama 3.3 70B
 
 **Funciones:**
 
 ```javascript
 chatWithAssistant(messages, availableProducts)
-→ Envía mensaje al GPT-3.5-turbo
-→ Incluye system prompt con boundaries
+→ Envía mensaje a Groq con Llama 3.3
+→ Incluye system prompt con proceso de pedido
 → Retorna respuesta del asistente
 
 Configuración:
-- model: "gpt-3.5-turbo"
+- model: "llama-3.3-70b-versatile"
 - temperature: 0.7
 - max_tokens: 500
 ```

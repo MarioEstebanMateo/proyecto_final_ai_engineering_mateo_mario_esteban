@@ -4,7 +4,9 @@
 
 ## 📋 Descripción del Proyecto
 
-Aplicación web completa de pedidos para una heladería, desarrollada con React + Vite + Tailwind CSS, que integra inteligencia artificial conversacional mediante OpenAI API y gestión de base de datos con Supabase.
+Aplicación web completa de pedidos para una heladería, desarrollada con **React + Vite + Tailwind CSS**, que integra **inteligencia artificial conversacional mediante Groq (Llama 3.3 70B)** y gestión de base de datos con **Supabase**.
+
+El asistente de IA guía al cliente paso a paso en todo el proceso de pedido: desde la recopilación de datos personales, selección de productos, hasta la confirmación final y generación automática de PDF con la orden completa.
 
 **Proyecto Final - IA Engineering - Mario Esteban Mateo**
 
@@ -29,49 +31,106 @@ Aplicación web completa de pedidos para una heladería, desarrollada con React 
    - Selección de tipo de entrega (Retiro/Delivery)
    - Validación de horarios (12:00 - 23:00)
    - Campos personalizados según tipo de entrega
-   - Persistencia de datos del cliente
+   - Validación en tiempo real con SweetAlert2
+   - Persistencia de datos del cliente en localStorage
 
 2. **Catálogo de Productos Dinámico**
 
-   - **Helados**: Selección de tipo y hasta 4 gustos
-   - **Postres Helados**: Selección directa con cantidad
-   - Carga de productos desde Supabase
-   - Interfaz intuitiva y responsive
+   - **Helados Personalizados**:
+     - Selección de tamaño (1/4 kg, 1/2 kg, 1 kg)
+     - Elección de hasta 4 gustos diferentes
+     - Validación de límite de gustos
+     - Selector de cantidad
+   - **Postres Helados**:
+     - Selección directa con cantidad personalizada
+     - Modal de cantidad con validación (1-10)
+   - Carga dinámica desde Supabase
+   - Interfaz intuitiva con estados de selección
+   - Diseño responsive con grid adaptativo
 
 3. **Carrito de Compras Avanzado**
 
    - Persistencia local (localStorage)
-   - Modificación de cantidades
-   - Eliminación de productos
+   - Modificación de cantidades en tiempo real
+   - Eliminación de productos individuales
    - Cálculo automático de subtotales y total
-   - Posibilidad de volver atrás y modificar
+   - Resumen detallado de gustos de helados
+   - Botones de navegación (Volver al catálogo, Modificar datos)
+   - Limpieza de carrito con confirmación
+   - Contador de items en header
 
-4. **Asistente Virtual con IA (OpenAI)**
+4. **🤖 Asistente Virtual IA Conversacional - FUNCIONALIDAD PRINCIPAL**
 
-   - Chat conversacional en tiempo real
-   - Boundaries definidos (solo heladería)
-   - Recomendaciones de productos
-   - Respuestas contextuales
-   - Interfaz flotante minimalista
+   - **Proceso Completo Guiado**:
 
-5. **Generación de PDF**
+     1. Recopila datos del cliente (nombre, apellido, teléfono)
+     2. Pregunta tipo de entrega (retiro/delivery)
+     3. Solicita dirección (si es delivery)
+     4. Valida horario de retiro/entrega (12:00-23:00)
+     5. Muestra catálogo de helados con precios
+     6. Guía en selección de gustos (máximo 4)
+     7. Pregunta cantidad de helados
+     8. Ofrece postres helados con precios
+     9. Detecta postres y cantidades solicitadas
+     10. Resume pedido completo con total
+     11. **Genera PDF automáticamente**
 
-   - Orden completa con todos los detalles
-   - Información del cliente
-   - Detalle de productos con gustos
-   - Subtotales y total
+   - **Características Técnicas**:
+     - Modelo: Llama 3.3 70B (Groq) - 100% GRATUITO
+     - Chat conversacional en tiempo real
+     - Detección inteligente de cantidades ("2 alfajores", "alfajores 2")
+     - Extracción automática de datos del pedido
+     - Boundaries definidos (solo heladería)
+     - Interfaz flotante con botón descriptivo
+     - Historial de conversación completo
+     - Mantiene foco en input automáticamente
+     - Mensaje de despedida personalizado con nombre del cliente
+     - Botón limitar chat con confirmación
+
+5. **Generación Automática de PDF**
+
+   - Formato profesional con logo
+   - Información completa del cliente
+   - Tipo de entrega claramente indicado
+   - Horario de retiro/entrega
+   - Detalle de productos:
+     - Nombre del producto
+     - Gustos seleccionados (helados)
+     - Cantidad
+     - Precio unitario
+     - Subtotal
+   - Cálculo de total general
+   - Fecha y hora de generación
    - Apertura automática en nueva ventana
+   - Formato bien alineado y legible
 
-6. **Modo Oscuro**
+6. **Modo Oscuro Persistente**
 
-   - Toggle persistente
-   - Transiciones suaves
+   - Toggle integrado en el header
+   - Persistencia con localStorage
+   - Transiciones suaves entre temas
    - Todos los componentes adaptados
+   - Iconos dinámicos (sol/luna)
+   - Colores optimizados para ambos temas
 
-7. **Diseño Responsive**
-   - Optimizado para escritorio
-   - Totalmente funcional en móviles
-   - Breakpoints adaptativos
+7. **Diseño Responsive Completo**
+
+   - Optimizado para escritorio (1024px+)
+   - Totalmente funcional en tablets (768px - 1023px)
+   - Perfecto en móviles (320px - 767px)
+   - Breakpoints adaptativos en todos los componentes
+   - Grid responsive en catálogo
+   - Chat flotante adaptable
+   - Navegación optimizada para touch
+
+8. **Validaciones y UX**
+   - Validación de horarios (12:00-23:00)
+   - Límite de 4 gustos de helado
+   - Confirmaciones para acciones importantes
+   - Mensajes de error descriptivos
+   - Estados de carga visibles
+   - Feedback visual en todas las acciones
+   - Alertas elegantes con SweetAlert2
 
 ---
 
@@ -86,9 +145,9 @@ Aplicación web completa de pedidos para una heladería, desarrollada con React 
 
 ### Backend & Servicios
 
-- **Supabase** - Base de datos PostgreSQL
-- **OpenAI API (GPT-3.5-turbo)** - IA Conversacional
-- **jsPDF** - Generación de PDFs
+- **Supabase** - Base de datos PostgreSQL en la nube
+- **Groq** - API gratuita con Llama 3.3 70B para el asistente conversacional
+- **jsPDF** - Generación de PDFs en el cliente
 
 ### Librerías Adicionales
 
@@ -103,8 +162,8 @@ Aplicación web completa de pedidos para una heladería, desarrollada con React 
 
 - Node.js (v18 o superior)
 - npm o yarn
-- Cuenta de Supabase
-- API Key de OpenAI
+- Cuenta de Supabase (gratuita)
+- API Key de Groq (gratuita, sin tarjeta de crédito)
 
 ### Pasos de Instalación
 
@@ -128,12 +187,13 @@ El archivo `.env` ya está creado en la raíz del proyecto. Debes editarlo con t
 ```env
 VITE_SUPABASE_URL=tu_url_de_supabase
 VITE_SUPABASE_KEY=tu_anon_key_de_supabase
-VITE_OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VITE_GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 > **Nota**:
 >
-> - La API Key de OpenAI ya está configurada
+> - **Groq es GRATUITO** - No necesitas tarjeta de crédito
+> - Obtén tu API Key en https://console.groq.com
 > - Debes configurar tu URL y Key de Supabase (ver [INSTALL.md](INSTALL.md) para guía paso a paso)
 > - El archivo `.env` está en `.gitignore` para proteger tus credenciales
 
@@ -224,7 +284,7 @@ proyecto_final_ai_engineering_mateo_mario_esteban/
 │   │   └── DarkModeContext.jsx     # Estado global modo oscuro
 │   ├── services/
 │   │   ├── supabase.js             # Integración Supabase
-│   │   └── openai.js               # Integración OpenAI
+│   │   └── groq.js                 # Integración Groq (IA)
 │   ├── utils/
 │   │   └── pdfGenerator.js         # Generación de PDFs
 │   ├── App.jsx                     # Componente principal
@@ -271,31 +331,84 @@ proyecto_final_ai_engineering_mateo_mario_esteban/
    - Se genera PDF automáticamente
    - PDF se abre en nueva ventana
 
-5. **Asistente IA (opcional)**
-   - Click en botón flotante
-   - Chatear con el asistente
-   - Recibir recomendaciones
-   - Resolver dudas
+5. **Asistente IA (PROCESO COMPLETO)**
+   - Click en botón "Haz tu pedido con nuestro Asistente IA"
+   - El asistente te guiará paso a paso:
+     1. Preguntará tu nombre y apellido
+     2. Solicitará teléfono de contacto
+     3. Tipo de entrega (retiro/delivery)
+     4. Dirección (si es delivery)
+     5. Horario (valida 12:00-23:00)
+     6. Te mostrará los helados disponibles con precios
+     7. Te dejará elegir hasta 4 gustos
+     8. Preguntará cantidad
+     9. Te ofrecerá postres helados con precios
+     10. Resumirá todo tu pedido con total
+     11. **Generará automáticamente el PDF**
+   - Chat conversacional natural
+   - Mantiene el foco para escribir fácilmente
+   - Te despide por tu nombre al finalizar
 
 ---
 
-## 🤖 Boundaries del Asistente IA
+## 🤖 Asistente IA Conversacional - Funcionalidad Principal
 
-El asistente conversacional tiene las siguientes limitaciones:
+El **Asistente Virtual con IA** es la característica principal de la aplicación. Utiliza **Groq con Llama 3.3 70B** (100% gratuito) para crear una experiencia conversacional completa que guía al cliente desde el inicio hasta la generación del PDF final.
+
+### ✅ Proceso Completo del Asistente
+
+1. **Recopilación de Datos**
+
+   - Nombre
+   - Apellido
+   - Teléfono
+
+2. **Configuración de Entrega**
+
+   - Tipo: Retiro o Delivery
+   - Dirección (si es delivery)
+   - Horario (valida 12:00-23:00)
+
+3. **Selección de Productos**
+
+   - Muestra tipos de helados con precios
+   - Permite elegir hasta 4 gustos
+   - Detecta cantidades automáticamente
+   - Ofrece postres helados con precios
+   - Reconoce pedidos ("2 alfajores", "torta helada")
+
+4. **Confirmación y Generación**
+   - Resume todo el pedido
+   - Muestra total a pagar
+   - Genera PDF automáticamente al confirmar
+   - Mensaje de despedida personalizado
+
+### 🎯 Características del Asistente
 
 ✅ **Puede:**
 
-- Responder preguntas sobre productos
-- Recomendar helados y postres
-- Explicar proceso de pedido
-- Dar información general de la heladería
+- Guiar todo el proceso de pedido paso a paso
+- Mostrar productos y precios disponibles
+- Validar información (horarios, límites)
+- Detectar cantidades en lenguaje natural
+- Resumir pedidos completos con totales
+- Generar PDF automáticamente
+- Mantener conversación contextual
 
-❌ **NO puede:**
+❌ **Boundaries (NO puede):**
 
-- Procesar pagos
-- Acceder a información de precios que no estén en el catálogo
-- Modificar el carrito directamente
-- Realizar acciones fuera del contexto de pedidos
+- Procesar pagos directamente
+- Modificar precios del catálogo
+- Acceder a información fuera de contexto
+- Realizar tareas no relacionadas con pedidos
+
+### 💡 Ventajas de Usar Groq
+
+- **100% Gratuito** - 14,400 requests/día
+- **Sin tarjeta de crédito** requerida
+- **Muy rápido** - Hasta 10x más que GPT
+- **Modelo potente** - Llama 3.3 70B
+- **Fácil integración** - API compatible con OpenAI
 
 ---
 
@@ -303,11 +416,12 @@ El asistente conversacional tiene las siguientes limitaciones:
 
 - ✅ Variables de entorno no expuestas en el código
 - ✅ `.env` incluido en `.gitignore`
-- ✅ Supabase Row Level Security (RLS) recomendado
-- ✅ OpenAI API Key en servidor (dangerouslyAllowBrowser solo para desarrollo)
-- ✅ Validaciones en frontend y backend
+- ✅ Supabase Row Level Security (RLS) configurado
+- ✅ API Keys protegidas en variables de entorno
+- ✅ Validaciones en frontend (SweetAlert2)
+- ✅ Groq API (sin riesgo de costos inesperados - es gratuito)
 
-> **Importante**: Para producción, se recomienda usar un backend intermediario que maneje las API keys de OpenAI.
+> **Nota**: Para producción se recomienda usar un backend intermediario que maneje las API keys.
 
 ---
 
@@ -354,8 +468,9 @@ className = "bg-white dark:bg-gray-800";
 
 ### Error: "No se pudo conectar con el asistente"
 
-- Verifica tu API Key de OpenAI
-- Revisa que tengas créditos disponibles en tu cuenta
+- Verifica tu API Key de Groq en el .env
+- Revisa que tengas conexión a internet
+- Groq es gratuito, no hay problemas de créditos
 
 ### Productos no se cargan
 
@@ -368,13 +483,17 @@ className = "bg-white dark:bg-gray-800";
 
 ### Desafíos Enfrentados
 
-1. **Integración de OpenAI**: Configurar boundaries adecuados para que el asistente no salga del contexto de la heladería.
+1. **Integración de IA Conversacional**: Configurar el asistente para guiar TODO el proceso de pedido, desde recopilación de datos hasta generación de PDF, manteniendo contexto en toda la conversación.
 
-2. **Persistencia de Estado**: Mantener sincronizado el carrito y los datos del cliente entre navegación y recargas.
+2. **Detección Inteligente de Pedidos**: Implementar extracción automática de datos (cantidades, productos, información personal) desde lenguaje natural del chat.
 
-3. **Generación de PDF**: Formatear correctamente el documento con todos los detalles de la orden.
+3. **Persistencia de Estado**: Mantener sincronizado el carrito y los datos del cliente entre navegación, recargas y diferentes rutas.
 
-4. **Responsive Design**: Adaptar componentes complejos como el catálogo y el chat para móviles.
+4. **Generación Dinámica de PDF**: Formatear correctamente el documento con todos los detalles de la orden, incluyendo gustos de helados y cálculos precisos.
+
+5. **Responsive Design Completo**: Adaptar componentes complejos como el catálogo y el chat flotante para funcionar perfectamente en móviles.
+
+6. **Cambio de OpenAI a Groq**: Migración a modelo gratuito manteniendo toda la funcionalidad y mejorando la velocidad.
 
 ### Aprendizajes Clave
 
