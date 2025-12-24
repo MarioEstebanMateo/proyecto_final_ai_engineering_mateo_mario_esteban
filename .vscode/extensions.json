@@ -1,0 +1,13 @@
+// Archivo de configuración para VS Code
+// Este archivo ayuda a configurar el entorno de desarrollo
+
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense"
+  ]
+}
