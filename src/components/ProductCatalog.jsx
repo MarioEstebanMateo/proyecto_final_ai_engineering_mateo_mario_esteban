@@ -41,7 +41,7 @@ const ProductCatalog = () => {
         icon: "error",
         title: "Error",
         text: "No se pudieron cargar los productos. Por favor, recarga la página.",
-        confirmButtonColor: "#ec4899",
+        confirmButtonColor: "#A8DAFF",
       });
     }
     setLoading(false);
@@ -63,7 +63,7 @@ const ProductCatalog = () => {
           icon: "warning",
           title: "Máximo alcanzado",
           text: "Puedes seleccionar hasta 4 gustos",
-          confirmButtonColor: "#ec4899",
+          confirmButtonColor: "#A8DAFF",
         });
         return;
       }
@@ -77,7 +77,7 @@ const ProductCatalog = () => {
         icon: "warning",
         title: "Atención",
         text: "Por favor selecciona un tipo de helado",
-        confirmButtonColor: "#ec4899",
+        confirmButtonColor: "#A8DAFF",
       });
       return;
     }
@@ -87,7 +87,7 @@ const ProductCatalog = () => {
         icon: "warning",
         title: "Atención",
         text: "Por favor selecciona al menos un gusto",
-        confirmButtonColor: "#ec4899",
+        confirmButtonColor: "#A8DAFF",
       });
       return;
     }
@@ -107,7 +107,7 @@ const ProductCatalog = () => {
       icon: "success",
       title: "¡Agregado!",
       text: `${tipoSeleccionado.nombre} agregado al carrito`,
-      confirmButtonColor: "#ec4899",
+      confirmButtonColor: "#A8DAFF",
       timer: 1500,
       showConfirmButton: false,
     });
@@ -131,7 +131,7 @@ const ProductCatalog = () => {
       showCancelButton: true,
       confirmButtonText: "Agregar",
       cancelButtonText: "Cancelar",
-      confirmButtonColor: "#ec4899",
+      confirmButtonColor: "#A8DAFF",
       inputValidator: (value) => {
         if (!value || value < 1) {
           return "Debes ingresar una cantidad válida";
@@ -154,7 +154,7 @@ const ProductCatalog = () => {
           icon: "success",
           title: "¡Agregado!",
           text: `${postre.nombre} agregado al carrito`,
-          confirmButtonColor: "#ec4899",
+          confirmButtonColor: "#A8DAFF",
           timer: 1500,
           showConfirmButton: false,
         });
@@ -165,7 +165,7 @@ const ProductCatalog = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-pink-500"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-pastel-sky-400"></div>
       </div>
     );
   }
@@ -188,18 +188,18 @@ const ProductCatalog = () => {
                 onClick={() => handleTipoClick(tipo)}
                 className={`card transition-all duration-300 ${
                   tipoSeleccionado?.id === tipo.id
-                    ? "border-2 border-pink-500 bg-pink-50 dark:bg-pink-900/20"
-                    : "border-2 border-transparent hover:border-pink-300"
+                    ? "border-2 border-pastel-sky-400 bg-pastel-sky-50 dark:bg-pastel-sky-900/20"
+                    : "border-2 border-transparent hover:border-pastel-sky-300"
                 }`}
               >
                 <div className="flex justify-between items-center">
                   <h4 className="text-lg font-semibold">{tipo.nombre}</h4>
-                  <span className="text-xl font-bold text-pink-500">
+                  <span className="text-xl font-bold text-pastel-sky-500">
                     ${tipo.precio}
                   </span>
                 </div>
                 {tipoSeleccionado?.id === tipo.id && (
-                  <div className="mt-2 flex items-center text-pink-500">
+                  <div className="mt-2 flex items-center text-pastel-sky-500">
                     <Check className="w-5 h-5 mr-1" />
                     <span className="text-sm">Seleccionado</span>
                   </div>
@@ -226,8 +226,8 @@ const ProductCatalog = () => {
                     onClick={() => handleGustoClick(gusto)}
                     className={`p-3 rounded-lg border-2 transition-all duration-300 text-sm font-medium ${
                       isSelected
-                        ? "border-pink-500 bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300"
-                        : "border-gray-300 dark:border-gray-600 hover:border-pink-300"
+                        ? "border-pastel-sky-500 bg-pastel-sky-50 dark:bg-pastel-sky-900/20 text-pastel-sky-700 dark:text-pastel-sky-300"
+                        : "border-gray-300 dark:border-gray-600 hover:border-pastel-sky-300"
                     }`}
                   >
                     {gusto.title}
@@ -277,12 +277,12 @@ const ProductCatalog = () => {
             >
               <h4 className="text-lg font-semibold mb-2">{postre.nombre}</h4>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-2xl font-bold text-pink-500">
+                <span className="text-2xl font-bold text-pastel-sky-500">
                   ${postre.precio}
                 </span>
                 <button
                   onClick={() => agregarPostreAlCarrito(postre)}
-                  className="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-lg transition duration-300"
+                  className="bg-pastel-sky-500 hover:bg-pastel-sky-600 text-white p-2 rounded-lg transition duration-300"
                 >
                   <Plus className="w-5 h-5" />
                 </button>

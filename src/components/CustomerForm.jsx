@@ -1,105 +1,105 @@
-import React, { useState, useEffect } from 'react'
-import { Truck, Store, Clock } from 'lucide-react'
-import { useCart } from '../context/CartContext'
-import Swal from 'sweetalert2'
+import React, { useState, useEffect } from "react";
+import { Truck, Store, Clock } from "lucide-react";
+import { useCart } from "../context/CartContext";
+import Swal from "sweetalert2";
 
 const CustomerForm = ({ onNext }) => {
-  const { customerInfo, updateCustomerInfo } = useCart()
-  const [formData, setFormData] = useState(customerInfo)
+  const { customerInfo, updateCustomerInfo } = useCart();
+  const [formData, setFormData] = useState(customerInfo);
 
   useEffect(() => {
-    setFormData(customerInfo)
-  }, [customerInfo])
+    setFormData(customerInfo);
+  }, [customerInfo]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const validateForm = () => {
     if (!formData.nombre.trim()) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor ingresa tu nombre',
-        confirmButtonColor: '#ec4899'
-      })
-      return false
+        icon: "error",
+        title: "Error",
+        text: "Por favor ingresa tu nombre",
+        confirmButtonColor: "#FFB3C1",
+      });
+      return false;
     }
 
     if (!formData.apellido.trim()) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor ingresa tu apellido',
-        confirmButtonColor: '#ec4899'
-      })
-      return false
+        icon: "error",
+        title: "Error",
+        text: "Por favor ingresa tu apellido",
+        confirmButtonColor: "#FFB3C1",
+      });
+      return false;
     }
 
     if (!formData.telefono.trim() || formData.telefono.length < 8) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor ingresa un número de teléfono válido',
-        confirmButtonColor: '#ec4899'
-      })
-      return false
+        icon: "error",
+        title: "Error",
+        text: "Por favor ingresa un número de teléfono válido",
+        confirmButtonColor: "#FFB3C1",
+      });
+      return false;
     }
 
     if (!formData.horario) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor selecciona un horario',
-        confirmButtonColor: '#ec4899'
-      })
-      return false
+        icon: "error",
+        title: "Error",
+        text: "Por favor selecciona un horario",
+        confirmButtonColor: "#FFB3C1",
+      });
+      return false;
     }
 
-    const [hora] = formData.horario.split(':').map(Number)
+    const [hora] = formData.horario.split(":").map(Number);
     if (hora < 12 || hora > 23) {
       Swal.fire({
-        icon: 'error',
-        title: 'Horario no válido',
-        text: 'El horario debe ser entre las 12:00 y las 23:00',
-        confirmButtonColor: '#ec4899'
-      })
-      return false
+        icon: "error",
+        title: "Horario no válido",
+        text: "El horario debe ser entre las 12:00 y las 23:00",
+        confirmButtonColor: "#FFB3C1",
+      });
+      return false;
     }
 
-    if (formData.tipoEntrega === 'delivery' && !formData.direccion.trim()) {
+    if (formData.tipoEntrega === "delivery" && !formData.direccion.trim()) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor ingresa la dirección de entrega',
-        confirmButtonColor: '#ec4899'
-      })
-      return false
+        icon: "error",
+        title: "Error",
+        text: "Por favor ingresa la dirección de entrega",
+        confirmButtonColor: "#FFB3C1",
+      });
+      return false;
     }
 
-    return true
-  }
+    return true;
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (validateForm()) {
-      updateCustomerInfo(formData)
+      updateCustomerInfo(formData);
       Swal.fire({
-        icon: 'success',
-        title: '¡Datos guardados!',
-        text: 'Ahora puedes seleccionar tus productos',
-        confirmButtonColor: '#ec4899',
-        timer: 2000
-      })
-      onNext()
+        icon: "success",
+        title: "¡Datos guardados!",
+        text: "Ahora puedes seleccionar tus productos",
+        confirmButtonColor: "#B4E7CE",
+        timer: 2000,
+      });
+      onNext();
     }
-  }
+  };
 
   return (
     <div className="max-w-2xl mx-auto">
       <div className="card">
-        <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-400 bg-clip-text text-transparent">
           Información del Pedido
         </h2>
 
@@ -110,14 +110,16 @@ const CustomerForm = ({ onNext }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 type="button"
-                onClick={() => setFormData(prev => ({ ...prev, tipoEntrega: 'retiro' }))}
+                onClick={() =>
+                  setFormData((prev) => ({ ...prev, tipoEntrega: "retiro" }))
+                }
                 className={`p-4 rounded-lg border-2 transition-all duration-300 flex items-center gap-3 ${
-                  formData.tipoEntrega === 'retiro'
-                    ? 'border-pink-500 bg-pink-50 dark:bg-pink-900/20'
-                    : 'border-gray-300 dark:border-gray-600'
+                  formData.tipoEntrega === "retiro"
+                    ? "border-pastel-sky-400 bg-pastel-sky-50 dark:bg-pastel-sky-900/20"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
               >
-                <Store className="w-6 h-6 text-pink-500" />
+                <Store className="w-6 h-6 text-pastel-sky-500" />
                 <div className="text-left">
                   <div className="font-semibold">Retiro en Local</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -128,14 +130,16 @@ const CustomerForm = ({ onNext }) => {
 
               <button
                 type="button"
-                onClick={() => setFormData(prev => ({ ...prev, tipoEntrega: 'delivery' }))}
+                onClick={() =>
+                  setFormData((prev) => ({ ...prev, tipoEntrega: "delivery" }))
+                }
                 className={`p-4 rounded-lg border-2 transition-all duration-300 flex items-center gap-3 ${
-                  formData.tipoEntrega === 'delivery'
-                    ? 'border-pink-500 bg-pink-50 dark:bg-pink-900/20'
-                    : 'border-gray-300 dark:border-gray-600'
+                  formData.tipoEntrega === "delivery"
+                    ? "border-pastel-sky-400 bg-pastel-sky-50 dark:bg-pastel-sky-900/20"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
               >
-                <Truck className="w-6 h-6 text-pink-500" />
+                <Truck className="w-6 h-6 text-pastel-sky-500" />
                 <div className="text-left">
                   <div className="font-semibold">Delivery</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -186,7 +190,7 @@ const CustomerForm = ({ onNext }) => {
           </div>
 
           {/* Dirección (solo si es delivery) */}
-          {formData.tipoEntrega === 'delivery' && (
+          {formData.tipoEntrega === "delivery" && (
             <div>
               <label className="label">Dirección de Entrega *</label>
               <input
@@ -204,7 +208,8 @@ const CustomerForm = ({ onNext }) => {
           <div>
             <label className="label">
               <Clock className="w-5 h-5 inline mr-2" />
-              Horario de {formData.tipoEntrega === 'retiro' ? 'Retiro' : 'Entrega'} *
+              Horario de{" "}
+              {formData.tipoEntrega === "retiro" ? "Retiro" : "Entrega"} *
             </label>
             <input
               type="time"
@@ -226,7 +231,7 @@ const CustomerForm = ({ onNext }) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CustomerForm
+export default CustomerForm;

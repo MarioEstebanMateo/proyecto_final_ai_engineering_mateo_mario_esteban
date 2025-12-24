@@ -225,7 +225,7 @@ const ChatAssistant = ({ availableProducts }) => {
             `,
             icon: "question",
             showCancelButton: true,
-            confirmButtonColor: "#ec4899",
+            confirmButtonColor: "#A8DAFF",
             cancelButtonColor: "#6b7280",
             confirmButtonText: "Sí, generar PDF",
             cancelButtonText: "Cancelar",
@@ -236,7 +236,7 @@ const ChatAssistant = ({ availableProducts }) => {
                 icon: "success",
                 title: "¡PDF Generado!",
                 text: "Tu orden se ha generado correctamente",
-                confirmButtonColor: "#ec4899",
+                confirmButtonColor: "#A8DAFF",
                 timer: 2000,
               });
               // Reiniciar chat con mensaje de despedida
@@ -275,7 +275,7 @@ const ChatAssistant = ({ availableProducts }) => {
         icon: "error",
         title: errorTitle,
         text: errorMessage,
-        confirmButtonColor: "#ec4899",
+        confirmButtonColor: "#A8DAFF",
       });
 
       setMessages([
@@ -296,7 +296,7 @@ const ChatAssistant = ({ availableProducts }) => {
       text: "Se eliminará el historial de conversación",
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#ec4899",
+      confirmButtonColor: "#A8DAFF",
       cancelButtonColor: "#6b7280",
       confirmButtonText: "Sí, limpiar",
       cancelButtonText: "Cancelar",
@@ -319,7 +319,7 @@ const ChatAssistant = ({ availableProducts }) => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3 animate-pulse hover:animate-none"
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-400 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3 animate-pulse hover:animate-none"
           aria-label="Abrir chat asistente"
         >
           <Bot className="w-6 h-6" />
@@ -334,9 +334,9 @@ const ChatAssistant = ({ availableProducts }) => {
       {/* Ventana de chat */}
       {isOpen && (
         <div className="fixed bottom-6 right-6 z-50 w-full max-w-md">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col h-[600px] max-h-[80vh] border-2 border-pink-500">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col h-[600px] max-h-[80vh] border-2 border-pastel-sky-400">
             {/* Header */}
-            <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+            <div className="bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-400 text-white p-4 rounded-t-2xl flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Bot className="w-8 h-8" />
                 <div>
@@ -363,7 +363,9 @@ const ChatAssistant = ({ availableProducts }) => {
                 >
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      message.role === "user" ? "bg-pink-500" : "bg-purple-500"
+                      message.role === "user"
+                        ? "bg-pastel-sky-400"
+                        : "bg-pastel-blue-400"
                     }`}
                   >
                     {message.role === "user" ? (
@@ -375,7 +377,7 @@ const ChatAssistant = ({ availableProducts }) => {
                   <div
                     className={`max-w-[80%] p-3 rounded-2xl ${
                       message.role === "user"
-                        ? "bg-pink-500 text-white rounded-tr-none"
+                        ? "bg-pastel-sky-400 text-white rounded-tr-none"
                         : "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-tl-none shadow"
                     }`}
                   >
@@ -388,7 +390,7 @@ const ChatAssistant = ({ availableProducts }) => {
 
               {isLoading && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-purple-500">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-pastel-blue-400">
                     <Bot className="w-5 h-5 text-white" />
                   </div>
                   <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl rounded-tl-none shadow">
@@ -415,7 +417,7 @@ const ChatAssistant = ({ availableProducts }) => {
               <div className="flex gap-2 mb-2">
                 <button
                   onClick={handleClearChat}
-                  className="text-xs text-gray-500 hover:text-pink-500 transition"
+                  className="text-xs text-gray-500 hover:text-pastel-sky-500 transition"
                 >
                   Limpiar chat
                 </button>
@@ -427,13 +429,13 @@ const ChatAssistant = ({ availableProducts }) => {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Escribe tu mensaje..."
-                  className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:border-pink-500 focus:ring-2 focus:ring-pink-200 dark:bg-gray-700 dark:text-white transition outline-none"
+                  className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:border-pastel-sky-400 focus:ring-2 focus:ring-pastel-sky-200 dark:bg-gray-700 dark:text-white transition outline-none"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !inputMessage.trim()}
-                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-xl hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-400 text-white p-3 rounded-xl hover:from-pastel-sky-500 hover:to-pastel-blue-500 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
                 </button>

@@ -14,7 +14,7 @@ const DarkModeToggle = () => {
       {darkMode ? (
         <Sun className="w-6 h-6 text-yellow-400" />
       ) : (
-        <Moon className="w-6 h-6 text-pink-500" />
+        <Moon className="w-6 h-6 text-pastel-sky-500" />
       )}
     </button>
   );
