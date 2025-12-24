@@ -152,6 +152,8 @@ El servidor se iniciará automáticamente. Si no, abre:
 http://localhost:3000
 ```
 
+> **💡 Demo en Producción:** https://proyecto-final-ai-engineering-mateo.vercel.app/
+
 ---
 
 ## Paso 7: Verificar que Todo Funcione

@@ -91,6 +91,8 @@ npm run dev
 
 Abre tu navegador en: http://localhost:3000
 
+> **💡 También puedes probar la demo en vivo:** https://proyecto-final-ai-engineering-mateo.vercel.app/
+
 ---
 
 ## 📚 DOCUMENTACIÓN DISPONIBLE

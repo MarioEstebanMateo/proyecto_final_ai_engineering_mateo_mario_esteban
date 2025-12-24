@@ -117,6 +117,26 @@ Casos de uso y pruebas completas.
 
 ---
 
+## 🚀 Despliegue
+
+### [🌐 DEPLOYMENT.md](DEPLOYMENT.md)
+
+**Tiempo: 10 minutos**
+
+Guía completa para desplegar en Vercel.
+
+- Preparación del proyecto
+- Configuración de Vercel
+- Variables de entorno
+- Dominio personalizado
+- Troubleshooting de deployment
+
+**📌 Sigue esto si:** Quieres poner tu app en producción con Vercel.
+
+**🌐 Demo en Vivo:** https://proyecto-final-ai-engineering-mateo.vercel.app/
+
+---
+
 ## 🎨 Personalización
 
 ### [🖌️ CUSTOMIZATION.md](CUSTOMIZATION.md)
@@ -223,6 +243,7 @@ proyecto_final_ai_engineering_mateo_mario_esteban/
 │   ├── README.md              ← Documentación principal
 │   ├── QUICKSTART.md          ← Inicio rápido (5 min)
 │   ├── INSTALL.md             ← Instalación detallada
+│   ├── DEPLOYMENT.md          ← Guía de despliegue en Vercel
 │   ├── TECHNICAL.md           ← Documentación técnica
 │   ├── TESTING.md             ← Casos de prueba
 │   ├── CUSTOMIZATION.md       ← Guía de personalización
@@ -333,6 +354,7 @@ proyecto_final_ai_engineering_mateo_mario_esteban/
 | QUICKSTART.md       | 5 min   | 5 min          |
 | README.md           | 15 min  | -              |
 | INSTALL.md          | 10 min  | 20-30 min      |
+| DEPLOYMENT.md       | 10 min  | 10 min         |
 | database/README.md  | 10 min  | 10-15 min      |
 | TECHNICAL.md        | 30 min  | -              |
 | TESTING.md          | 20 min  | Variable       |
@@ -342,6 +364,7 @@ proyecto_final_ai_engineering_mateo_mario_esteban/
 
 **Total para leer todo:** ~2 horas
 **Total para instalar:** ~30-45 minutos
+**Total para desplegar:** ~10 minutos
 
 ---
 

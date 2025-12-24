@@ -574,7 +574,7 @@ test("pedido end-to-end", async ({ page }) => {
 
 - [ ] Docker containerization
 - [ ] CI/CD con GitHub Actions
-- [ ] Deploy en Vercel/Netlify
+- [x] Deploy en Vercel ✅ https://proyecto-final-ai-engineering-mateo.vercel.app/
 - [ ] Monitoring con Sentry
 
 ---

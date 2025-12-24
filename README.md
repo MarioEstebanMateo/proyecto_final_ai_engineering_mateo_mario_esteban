@@ -2,6 +2,23 @@
 
 > 📖 **¿Primera vez aquí?** Lee el [Índice Completo de Documentación](INDEX.md) para navegar por todas las guías.
 
+## 🌐 Demo en Vivo
+
+**🚀 Aplicación desplegada en Vercel:**
+
+👉 **https://proyecto-final-ai-engineering-mateo.vercel.app/**
+
+Prueba todas las funcionalidades:
+
+- ✅ Catálogo de helados y postres
+- ✅ Carrito de compras interactivo
+- ✅ Asistente IA conversacional con Groq (Llama 3.3 70B)
+- ✅ Generación automática de PDF de pedidos
+- ✅ Modo oscuro
+- ✅ Diseño responsive
+
+---
+
 ## 📋 Descripción del Proyecto
 
 Aplicación web completa de pedidos para una heladería, desarrollada con **React + Vite + Tailwind CSS**, que integra **inteligencia artificial conversacional mediante Groq (Llama 3.3 70B)** y gestión de base de datos con **Supabase**.
@@ -264,6 +281,8 @@ npm run dev
 ```
 
 La aplicación estará disponible en `http://localhost:3000`
+
+> **💡 Demo en Producción:** https://proyecto-final-ai-engineering-mateo.vercel.app/
 
 ---
 

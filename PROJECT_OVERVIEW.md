@@ -344,6 +344,8 @@ npm run build
 npm run preview
 ```
 
+**🌐 Demo en Vivo:** https://proyecto-final-ai-engineering-mateo.vercel.app/
+
 ---
 
 ## 🎓 Aprendizajes Clave

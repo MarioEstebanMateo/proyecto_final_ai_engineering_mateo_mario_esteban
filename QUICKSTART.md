@@ -1,5 +1,13 @@
 # ⚡ Inicio Rápido - 5 Minutos
 
+## 🌐 Demo en Vivo
+
+**¿Quieres probar la aplicación antes de instalarla?**
+
+👉 **https://proyecto-final-ai-engineering-mateo.vercel.app/**
+
+---
+
 ## Para Usuarios con Supabase ya Configurado
 
 Si ya tienes tu proyecto de Supabase configurado, sigue estos pasos:
