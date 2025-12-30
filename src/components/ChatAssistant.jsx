@@ -8,13 +8,15 @@ import Swal from "sweetalert2";
 const extractOrderData = (responseText) => {
   try {
     // Buscar el bloque JSON en la respuesta usando los delimitadores
-    let jsonMatch = responseText.match(/PEDIDO_JSON_INICIO\s*({[\s\S]*?})\s*PEDIDO_JSON_FIN/);
-    
+    let jsonMatch = responseText.match(
+      /PEDIDO_JSON_INICIO\s*({[\s\S]*?})\s*PEDIDO_JSON_FIN/
+    );
+
     // Fallback: buscar bloques con ```json si el asistente lo usa
     if (!jsonMatch) {
       jsonMatch = responseText.match(/```json\s*({[\s\S]*?})\s*```/);
     }
-    
+
     if (!jsonMatch) {
       console.error("No se encontró bloque JSON en la respuesta");
       return null;
@@ -125,7 +127,11 @@ const ChatAssistant = ({ availableProducts }) => {
       setMessages(updatedMessages);
 
       // Detectar si el pedido está completo (buscar JSON en la respuesta)
-      if (response.includes("pedido_completo") && (response.includes("PEDIDO_JSON_INICIO") || response.includes("```json"))) {
+      if (
+        response.includes("pedido_completo") &&
+        (response.includes("PEDIDO_JSON_INICIO") ||
+          response.includes("```json"))
+      ) {
         // Extraer datos del pedido desde el JSON estructurado
         const orderData = extractOrderData(response);
 
@@ -312,13 +318,15 @@ const ChatAssistant = ({ availableProducts }) => {
                     }`}
                   >
                     <p className="text-sm whitespace-pre-wrap">
-                      {message.role === "assistant" 
+                      {message.role === "assistant"
                         ? message.content
-                            .replace(/PEDIDO_JSON_INICIO[\s\S]*?PEDIDO_JSON_FIN/g, '')
-                            .replace(/```json[\s\S]*?```/g, '')
+                            .replace(
+                              /PEDIDO_JSON_INICIO[\s\S]*?PEDIDO_JSON_FIN/g,
+                              ""
+                            )
+                            .replace(/```json[\s\S]*?```/g, "")
                             .trim()
-                        : message.content
-                      }
+                        : message.content}
                     </p>
                   </div>
                 </div>
