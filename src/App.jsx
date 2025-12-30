@@ -73,10 +73,12 @@ function App() {
           <footer className="bg-gray-800 dark:bg-gray-950 text-white py-6 mt-12">
             <div className="container mx-auto px-4 text-center">
               <p className="text-sm">
-                © 2025 Heladería Premium - Aplicación con IA Conversacional
+                © {new Date().getFullYear()} Heladería Premium - Aplicación con
+                IA Conversacional
               </p>
               <p className="text-xs text-gray-400 mt-2">
-                Desarrollado por Mario Esteban Mateo
+                Desarrollado por Mario Esteban Mateo para NUCBA - Curso de AI
+                Engineering
               </p>
             </div>
           </footer>
