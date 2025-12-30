@@ -183,7 +183,15 @@ const ChatAssistant = ({ availableProducts }) => {
               setMessages([
                 {
                   role: "assistant",
-                  content: `¡Muchas gracias por tu pedido, ${orderData.nombre}! 🎉🍦\n\nTu orden ha sido generada exitosamente y el PDF ya está disponible. \n\nTe esperamos ${orderData.tipoEntrega === "delivery" ? "para la entrega" : "en nuestra heladería"} ${orderData.horario}. ¡Que disfrutes tus helados!\n\n¿Te gustaría hacer otro pedido?`,
+                  content: `¡Muchas gracias por tu pedido, ${
+                    orderData.nombre
+                  }! 🎉🍦\n\nTu orden ha sido generada exitosamente y el PDF ya está disponible. \n\nTe esperamos ${
+                    orderData.tipoEntrega === "delivery"
+                      ? "para la entrega"
+                      : "en nuestra heladería"
+                  } ${
+                    orderData.horario
+                  }. ¡Que disfrutes tus helados!\n\n¿Te gustaría hacer otro pedido?`,
                 },
               ]);
             }
