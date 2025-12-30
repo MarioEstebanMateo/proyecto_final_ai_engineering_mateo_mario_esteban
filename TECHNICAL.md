@@ -36,7 +36,7 @@ La aplicación sigue una arquitectura de **componentes funcionales con React Hoo
 └─────────────────────────────────────┘
           ↓           ↓
     ┌─────────┐  ┌──────────┐
-    │Supabase │  │ OpenAI   │
+    │Supabase │  │   Groq   │
     └─────────┘  └──────────┘
 ```
 
@@ -58,7 +58,8 @@ src/
 │
 ├── services/         # Servicios externos
 │   ├── supabase.js
-│   └── openai.js
+│   ├── groq.js
+│   └── openai.js (legacy)
 │
 ├── utils/            # Utilidades
 │   └── pdfGenerator.js

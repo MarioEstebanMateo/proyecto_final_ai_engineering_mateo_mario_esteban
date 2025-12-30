@@ -170,16 +170,20 @@ const ChatAssistant = ({ availableProducts }) => {
               generarPDFOrden(orderData);
               Swal.fire({
                 icon: "success",
-                title: "¡PDF Generado!",
-                text: "Tu orden se ha generado correctamente",
+                title: "¡Pedido Confirmado!",
+                html: `
+                  <p class="mb-3">Tu pedido ha sido generado correctamente, ${orderData.nombre}! 🎉</p>
+                  <p class="text-sm text-gray-600">El PDF se abrirá en una nueva pestaña con todos los detalles de tu orden.</p>
+                `,
                 confirmButtonColor: "#A8DAFF",
-                timer: 2000,
+                confirmButtonText: "Entendido",
+                timer: 3500,
               });
-              // Reiniciar chat con mensaje de despedida
+              // Reiniciar chat con mensaje de despedida amable
               setMessages([
                 {
                   role: "assistant",
-                  content: `¡Gracias por tu pedido, ${orderData.nombre}! 🎉\n\nTu PDF ha sido generado exitosamente. Nos vemos pronto en la heladería.\n\n¿Quieres hacer otro pedido?`,
+                  content: `¡Muchas gracias por tu pedido, ${orderData.nombre}! 🎉🍦\n\nTu orden ha sido generada exitosamente y el PDF ya está disponible. \n\nTe esperamos ${orderData.tipoEntrega === "delivery" ? "para la entrega" : "en nuestra heladería"} ${orderData.horario}. ¡Que disfrutes tus helados!\n\n¿Te gustaría hacer otro pedido?`,
                 },
               ]);
             }
