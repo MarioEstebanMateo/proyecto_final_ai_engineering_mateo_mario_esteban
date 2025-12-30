@@ -11,7 +11,7 @@ export const generarPDFOrden = (ordenData) => {
   // Título
   doc.setFontSize(24);
   doc.setTextColor(168, 218, 255); // Celeste pastel #A8DAFF
-  doc.text("HELADERÍA", pageWidth / 2, yPos, { align: "center" });
+  doc.text("HELADERÍA PREMIUM", pageWidth / 2, yPos, { align: "center" });
 
   yPos += 15;
   doc.setFontSize(16);
