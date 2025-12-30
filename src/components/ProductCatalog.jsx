@@ -174,7 +174,7 @@ const ProductCatalog = () => {
     <div className="space-y-12">
       {/* Sección Helados */}
       <section>
-        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-500 bg-clip-text text-transparent">
           🍦 Helados
         </h2>
 
@@ -266,7 +266,7 @@ const ProductCatalog = () => {
 
       {/* Sección Postres Helados */}
       <section>
-        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-500 bg-clip-text text-transparent">
           🍰 Postres Helados
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

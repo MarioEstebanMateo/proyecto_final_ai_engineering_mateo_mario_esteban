@@ -23,7 +23,7 @@ const Cart = ({ onNavigate }) => {
       text: "Se quitará este producto del carrito",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#FFB3C1",
+      confirmButtonColor: "#80C8FF",
       cancelButtonColor: "#6b7280",
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
@@ -34,7 +34,7 @@ const Cart = ({ onNavigate }) => {
           icon: "success",
           title: "Eliminado",
           text: "Producto eliminado del carrito",
-          confirmButtonColor: "#B4E7CE",
+          confirmButtonColor: "#80C8FF",
           timer: 1500,
           showConfirmButton: false,
         });
@@ -48,7 +48,7 @@ const Cart = ({ onNavigate }) => {
         icon: "warning",
         title: "Carrito vacío",
         text: "Agrega productos antes de confirmar",
-        confirmButtonColor: "#FFD1B3",
+        confirmButtonColor: "#80C8FF",
       });
       return;
     }
@@ -81,7 +81,7 @@ const Cart = ({ onNavigate }) => {
       `,
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#B4E7CE",
+      confirmButtonColor: "#80C8FF",
       cancelButtonColor: "#6b7280",
       confirmButtonText: "Sí, confirmar",
       cancelButtonText: "Revisar",
@@ -111,7 +111,7 @@ const Cart = ({ onNavigate }) => {
           icon: "success",
           title: "¡Pedido Confirmado!",
           text: "Tu orden ha sido generada. Revisa el PDF.",
-          confirmButtonColor: "#B4E7CE",
+          confirmButtonColor: "#80C8FF",
           timer: 3000,
         }).then(() => {
           clearCart();

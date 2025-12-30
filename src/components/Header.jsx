@@ -31,7 +31,7 @@ const Header = ({ onNavigate, currentPage }) => {
               >
                 <ShoppingCart className="w-6 h-6" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-pastel-aqua-400 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-pastel-sky-400 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}

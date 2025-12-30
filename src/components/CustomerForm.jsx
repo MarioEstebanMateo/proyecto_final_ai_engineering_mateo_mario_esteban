@@ -22,7 +22,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "error",
         title: "Error",
         text: "Por favor ingresa tu nombre",
-        confirmButtonColor: "#FFB3C1",
+        confirmButtonColor: "#80C8FF",
       });
       return false;
     }
@@ -32,7 +32,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "error",
         title: "Error",
         text: "Por favor ingresa tu apellido",
-        confirmButtonColor: "#FFB3C1",
+        confirmButtonColor: "#80C8FF",
       });
       return false;
     }
@@ -42,7 +42,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "error",
         title: "Error",
         text: "Por favor ingresa un número de teléfono válido",
-        confirmButtonColor: "#FFB3C1",
+        confirmButtonColor: "#80C8FF",
       });
       return false;
     }
@@ -52,7 +52,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "error",
         title: "Error",
         text: "Por favor selecciona un horario",
-        confirmButtonColor: "#FFB3C1",
+        confirmButtonColor: "#80C8FF",
       });
       return false;
     }
@@ -63,7 +63,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "error",
         title: "Horario no válido",
         text: "El horario debe ser entre las 12:00 y las 23:00",
-        confirmButtonColor: "#FFB3C1",
+        confirmButtonColor: "#80C8FF",
       });
       return false;
     }
@@ -73,7 +73,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "error",
         title: "Error",
         text: "Por favor ingresa la dirección de entrega",
-        confirmButtonColor: "#FFB3C1",
+        confirmButtonColor: "#80C8FF",
       });
       return false;
     }
@@ -89,7 +89,7 @@ const CustomerForm = ({ onNext }) => {
         icon: "success",
         title: "¡Datos guardados!",
         text: "Ahora puedes seleccionar tus productos",
-        confirmButtonColor: "#B4E7CE",
+        confirmButtonColor: "#80C8FF",
         timer: 2000,
       });
       onNext();
