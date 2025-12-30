@@ -4,115 +4,47 @@ import { chatWithAssistant } from "../services/groq";
 import { generarPDFOrden } from "../utils/pdfGenerator";
 import Swal from "sweetalert2";
 
-// Función para extraer datos del pedido de la conversación
-const extractOrderData = (conversationText, availableProducts) => {
+// Función para extraer datos del pedido desde el JSON estructurado
+const extractOrderData = (responseText) => {
   try {
-    const lines = conversationText.split("\n");
-    let orderData = {
-      nombre: "",
-      apellido: "",
-      telefono: "",
-      tipoEntrega: "retiro",
-      direccion: "",
-      horario: "",
-      items: [],
-      total: 0,
-    };
-
-    // Extraer datos usando patrones
-    for (const line of lines) {
-      if (line.includes("NOMBRE:")) {
-        orderData.nombre = line.split("NOMBRE:")[1].trim();
-      }
-      if (line.includes("APELLIDO:")) {
-        orderData.apellido = line.split("APELLIDO:")[1].trim();
-      }
-      if (line.includes("TELÉFONO:") || line.includes("TELEFONO:")) {
-        orderData.telefono = line.split(/TELÉFONO:|TELEFONO:/)[1].trim();
-      }
-      if (line.includes("TIPO_ENTREGA:")) {
-        const tipo = line.split("TIPO_ENTREGA:")[1].trim().toLowerCase();
-        orderData.tipoEntrega = tipo.includes("delivery")
-          ? "delivery"
-          : "retiro";
-      }
-      if (line.includes("DIRECCIÓN:") || line.includes("DIRECCION:")) {
-        orderData.direccion = line.split(/DIRECCIÓN:|DIRECCION:/)[1].trim();
-      }
-      if (line.includes("HORARIO:")) {
-        orderData.horario = line.split("HORARIO:")[1].trim();
-      }
+    // Buscar el bloque JSON en la respuesta usando los delimitadores
+    let jsonMatch = responseText.match(/PEDIDO_JSON_INICIO\s*({[\s\S]*?})\s*PEDIDO_JSON_FIN/);
+    
+    // Fallback: buscar bloques con ```json si el asistente lo usa
+    if (!jsonMatch) {
+      jsonMatch = responseText.match(/```json\s*({[\s\S]*?})\s*```/);
+    }
+    
+    if (!jsonMatch) {
+      console.error("No se encontró bloque JSON en la respuesta");
+      return null;
     }
 
-    // Extraer productos mencionados en la conversación
-    const conversationLower = conversationText.toLowerCase();
+    const jsonData = JSON.parse(jsonMatch[1]);
 
-    // Buscar tipos de helados mencionados
-    availableProducts.tiposHelados.forEach((tipo) => {
-      if (conversationLower.includes(tipo.nombre.toLowerCase())) {
-        const gustos = [];
-        // Buscar gustos mencionados
-        availableProducts.gustosHelados.forEach((gusto) => {
-          const gustoName = gusto.title || gusto.nombre;
-          if (conversationLower.includes(gustoName.toLowerCase())) {
-            gustos.push(gustoName);
-          }
-        });
+    if (!jsonData.pedido_completo) {
+      return null;
+    }
 
-        if (gustos.length > 0) {
-          orderData.items.push({
-            id: `helado-${tipo.id}`,
-            nombre: tipo.nombre,
-            tipo: "helado",
-            precio: tipo.precio,
-            cantidad: 1,
-            gustos: gustos.slice(0, 4),
-            subtotal: tipo.precio,
-          });
-          orderData.total += tipo.precio;
-        }
-      }
-    });
-
-    // Buscar postres mencionados (solo en mensajes del usuario)
-    const userMessages = conversationText
-      .split("\n")
-      .filter((line, idx) => {
-        // Buscar líneas que parecen ser del usuario (después de respuestas del asistente)
-        return (
-          line.length > 0 &&
-          !line.includes("NOMBRE:") &&
-          !line.includes("APELLIDO:")
-        );
-      })
-      .join(" ")
-      .toLowerCase();
-
-    availableProducts.postresHelados.forEach((postre) => {
-      const postreNameLower = postre.nombre.toLowerCase();
-      // Buscar menciones explícitas del postre en respuestas del usuario
-      const regex = new RegExp(`\\b${postreNameLower}\\b`, "i");
-      if (regex.test(userMessages)) {
-        // Buscar cantidad mencionada cerca del nombre del postre
-        const cantidadRegex = new RegExp(
-          `(\\d+)\\s*${postreNameLower}|${postreNameLower}\\s*(\\d+)`,
-          "i"
-        );
-        const match = userMessages.match(cantidadRegex);
-        const cantidad = match ? parseInt(match[1] || match[2]) : 1;
-
-        orderData.items.push({
-          id: `postre-${postre.id}`,
-          nombre: postre.nombre,
-          tipo: "postre",
-          precio: postre.precio,
-          cantidad: cantidad,
-          gustos: [],
-          subtotal: postre.precio * cantidad,
-        });
-        orderData.total += postre.precio * cantidad;
-      }
-    });
+    // Transformar el formato del JSON al formato esperado por la aplicación
+    const orderData = {
+      nombre: jsonData.nombre || "",
+      apellido: jsonData.apellido || "",
+      telefono: jsonData.telefono || "",
+      tipoEntrega: jsonData.tipo_entrega || "retiro",
+      direccion: jsonData.direccion || "",
+      horario: jsonData.horario || "",
+      items: (jsonData.items || []).map((item, index) => ({
+        id: `${item.tipo}-${index}`,
+        nombre: item.nombre,
+        tipo: item.tipo,
+        precio: parseFloat(item.precio),
+        cantidad: parseInt(item.cantidad),
+        gustos: item.gustos || [],
+        subtotal: parseFloat(item.precio) * parseInt(item.cantidad),
+      })),
+      total: parseFloat(jsonData.total || 0),
+    };
 
     // Validar que tengamos datos mínimos
     if (
@@ -120,6 +52,7 @@ const extractOrderData = (conversationText, availableProducts) => {
       !orderData.telefono ||
       orderData.items.length === 0
     ) {
+      console.error("Datos incompletos en el pedido");
       return null;
     }
 
@@ -191,13 +124,10 @@ const ChatAssistant = ({ availableProducts }) => {
       ];
       setMessages(updatedMessages);
 
-      // Detectar si el pedido está completo
-      if (response.includes("PEDIDO_COMPLETO")) {
-        // Extraer datos del pedido de toda la conversación
-        const conversationText = updatedMessages
-          .map((m) => m.content)
-          .join("\n");
-        const orderData = extractOrderData(conversationText, availableProducts);
+      // Detectar si el pedido está completo (buscar JSON en la respuesta)
+      if (response.includes("pedido_completo") && (response.includes("PEDIDO_JSON_INICIO") || response.includes("```json"))) {
+        // Extraer datos del pedido desde el JSON estructurado
+        const orderData = extractOrderData(response);
 
         if (orderData) {
           // Mostrar confirmación y generar PDF
@@ -382,7 +312,13 @@ const ChatAssistant = ({ availableProducts }) => {
                     }`}
                   >
                     <p className="text-sm whitespace-pre-wrap">
-                      {message.content}
+                      {message.role === "assistant" 
+                        ? message.content
+                            .replace(/PEDIDO_JSON_INICIO[\s\S]*?PEDIDO_JSON_FIN/g, '')
+                            .replace(/```json[\s\S]*?```/g, '')
+                            .trim()
+                        : message.content
+                      }
                     </p>
                   </div>
                 </div>

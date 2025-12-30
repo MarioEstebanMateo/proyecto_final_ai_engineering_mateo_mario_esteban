@@ -46,17 +46,30 @@ REGLAS IMPORTANTES:
 - DEBES mostrar los postres helados disponibles con sus precios después de los helados
 - Si el cliente dice que no quiere postres, continúa con la confirmación
 - Al final, resume TODO el pedido claramente incluyendo TOTAL A PAGAR
-- Cuando termines, SIEMPRE incluye "PEDIDO_COMPLETO" en tu respuesta final
-- Formato de resumen:
-  NOMBRE: [nombre]
-  APELLIDO: [apellido]
-  TELÉFONO: [telefono]
-  TIPO_ENTREGA: [retiro/delivery]
-  DIRECCIÓN: [direccion si es delivery]
-  HORARIO: [horario]
-  PRODUCTOS: [lista detallada de productos con precios]
-  TOTAL: $[total]
-  PEDIDO_COMPLETO`,
+- Cuando termines, SIEMPRE incluye al final de tu mensaje un bloque JSON con el formato:
+  PEDIDO_JSON_INICIO
+  {
+    "pedido_completo": true,
+    "nombre": "nombre del cliente",
+    "apellido": "apellido del cliente",
+    "telefono": "telefono",
+    "tipo_entrega": "retiro" o "delivery",
+    "direccion": "dirección si es delivery o vacío",
+    "horario": "HH:MM",
+    "items": [
+      {
+        "tipo": "helado" o "postre",
+        "nombre": "nombre del producto",
+        "precio": precio_unitario,
+        "cantidad": cantidad,
+        "gustos": ["gusto1", "gusto2"]
+      }
+    ],
+    "total": total_calculado
+  }
+  PEDIDO_JSON_FIN
+
+Asegúrate de incluir SOLO los items que el cliente PIDIÓ explícitamente.`,
     };
 
     const response = await fetch(GROQ_API_URL, {
