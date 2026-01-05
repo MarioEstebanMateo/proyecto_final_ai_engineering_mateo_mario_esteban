@@ -161,7 +161,7 @@ const ChatAssistant = ({ availableProducts }) => {
             `,
             icon: "question",
             showCancelButton: true,
-            confirmButtonColor: "#A8DAFF",
+            confirmButtonColor: "#60B8FF",
             cancelButtonColor: "#6b7280",
             confirmButtonText: "Sí, generar PDF",
             cancelButtonText: "Cancelar",
@@ -175,7 +175,7 @@ const ChatAssistant = ({ availableProducts }) => {
                   <p class="mb-3">Tu pedido ha sido generado correctamente, ${orderData.nombre}! 🎉</p>
                   <p class="text-sm text-gray-600">El PDF se abrirá en una nueva pestaña con todos los detalles de tu orden.</p>
                 `,
-                confirmButtonColor: "#A8DAFF",
+                confirmButtonColor: "#60B8FF",
                 confirmButtonText: "Entendido",
                 timer: 3500,
               });
@@ -267,7 +267,7 @@ const ChatAssistant = ({ availableProducts }) => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-pastel-sky-400 to-pastel-blue-400 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3 animate-pulse hover:animate-none"
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-pastel-sky-500 to-pastel-blue-500 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-3xl hover:from-pastel-sky-600 hover:to-pastel-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 animate-pulse hover:animate-none"
           aria-label="Abrir chat asistente"
         >
           <Bot className="w-6 h-6" />
@@ -385,7 +385,7 @@ const ChatAssistant = ({ availableProducts }) => {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Escribe tu mensaje..."
-                  className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:border-pastel-sky-400 focus:ring-2 focus:ring-pastel-sky-200 dark:bg-gray-700 dark:text-white transition outline-none"
+                  className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:border-pastel-sky-500 focus:ring-2 focus:ring-pastel-sky-300 dark:bg-gray-700 dark:text-white transition outline-none"
                   disabled={isLoading}
                 />
                 <button

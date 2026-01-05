@@ -188,8 +188,8 @@ const ProductCatalog = () => {
                 onClick={() => handleTipoClick(tipo)}
                 className={`card transition-all duration-300 ${
                   tipoSeleccionado?.id === tipo.id
-                    ? "border-2 border-pastel-sky-400 bg-pastel-sky-50 dark:bg-pastel-sky-900/20"
-                    : "border-2 border-transparent hover:border-pastel-sky-300"
+                    ? "border-2 border-pastel-sky-500 bg-pastel-sky-50 dark:bg-pastel-sky-900/20"
+                    : "border-2 border-transparent hover:border-pastel-sky-400"
                 }`}
               >
                 <div className="flex justify-between items-center">
@@ -227,7 +227,7 @@ const ProductCatalog = () => {
                     className={`p-3 rounded-lg border-2 transition-all duration-300 text-sm font-medium ${
                       isSelected
                         ? "border-pastel-sky-500 bg-pastel-sky-50 dark:bg-pastel-sky-900/20 text-pastel-sky-700 dark:text-pastel-sky-300"
-                        : "border-gray-300 dark:border-gray-600 hover:border-pastel-sky-300"
+                        : "border-gray-300 dark:border-gray-600 hover:border-pastel-sky-400"
                     }`}
                   >
                     {gusto.title}

@@ -10,7 +10,7 @@ export const generarPDFOrden = (ordenData) => {
 
   // Título
   doc.setFontSize(24);
-  doc.setTextColor(168, 218, 255); // Celeste pastel #A8DAFF
+  doc.setTextColor(96, 184, 255); // Celeste pastel #60B8FF (pastel-sky-500)
   doc.text("HELADERÍA PREMIUM", pageWidth / 2, yPos, { align: "center" });
 
   yPos += 15;
@@ -20,7 +20,7 @@ export const generarPDFOrden = (ordenData) => {
 
   // Línea separadora
   yPos += 10;
-  doc.setDrawColor(168, 218, 255); // Celeste pastel
+  doc.setDrawColor(96, 184, 255); // Celeste pastel #60B8FF (pastel-sky-500)
   doc.setLineWidth(0.5);
   doc.line(margin, yPos, pageWidth - margin, yPos);
 
@@ -121,7 +121,7 @@ export const generarPDFOrden = (ordenData) => {
   doc.setFontSize(14);
   doc.setFont(undefined, "bold");
   doc.text("TOTAL A PAGAR:", pageWidth - 90, yPos);
-  doc.setTextColor(168, 218, 255); // Celeste pastel
+  doc.setTextColor(96, 184, 255); // Celeste pastel #60B8FF (pastel-sky-500)
   doc.text(`$${ordenData.total.toFixed(2)}`, pageWidth - margin, yPos, {
     align: "right",
   });
