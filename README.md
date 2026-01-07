@@ -519,7 +519,7 @@ className = "bg-white dark:bg-gray-800";
 - **Context API**: Excelente para gestionar estado global sin Redux
 - **LocalStorage**: Fundamental para persistencia del lado del cliente
 - **Tailwind CSS**: Productividad muy alta con utility classes
-- **OpenAI API**: Importancia de prompts bien estructurados
+- **Groq API**: Importancia de prompts bien estructurados y velocidad excepcional
 - **Supabase**: Alternativa poderosa a Firebase con PostgreSQL
 
 ### Mejoras Futuras
@@ -552,7 +552,7 @@ Este proyecto fue desarrollado con fines educativos para el curso de IA Engineer
 
 ## 🙏 Agradecimientos
 
-- OpenAI por la API de GPT-3.5
+- Groq por la API gratuita con Llama 3.3 70B
 - Supabase por la plataforma de base de datos
 - Comunidad de React y Tailwind CSS
 - Instructores del curso de IA Engineering
